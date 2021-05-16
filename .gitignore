@@ -6,3 +6,6 @@ get-pip.py
 
 # Database
 db.sqlite3
+
+# pycache
+*.pyc
