@@ -1,2 +1,8 @@
 # Enviroments
 .env
+
+# other
+get-pip.py
+
+# Database
+db.sqlite3
