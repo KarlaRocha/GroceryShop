@@ -3,6 +3,7 @@
 
 # other
 get-pip.py
+.pass
 
 # Database
 db.sqlite3
