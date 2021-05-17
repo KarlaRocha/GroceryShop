@@ -11,3 +11,9 @@ db.sqlite3
 # pycache
 *.pyc
 __pycache__
+
+# modules
+node_modules
+
+# graphql
+**/*/__generated__/
