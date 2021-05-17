@@ -1,0 +1,61 @@
+schema {
+  query: Query
+}
+
+type CategoryNode implements Node {
+  id: ID!
+  name: String!
+  products(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, description: String, description_Icontains: String, category: ID, category_Name: String): ProductNodeConnection!
+}
+
+type CategoryNodeConnection {
+  pageInfo: PageInfo!
+  edges: [CategoryNodeEdge]!
+}
+
+type CategoryNodeEdge {
+  node: CategoryNode
+  cursor: String!
+}
+
+scalar Date
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type ProductNode implements Node {
+  id: ID!
+  name: String!
+  description: String!
+  category: CategoryNode!
+  price: Float!
+  quantity: Float!
+  unitOfMeasure: String!
+  expirationDate: Date!
+  inStock: Boolean
+}
+
+type ProductNodeConnection {
+  pageInfo: PageInfo!
+  edges: [ProductNodeEdge]!
+}
+
+type ProductNodeEdge {
+  node: ProductNode
+  cursor: String!
+}
+
+type Query {
+  category(id: ID!): CategoryNode
+  allCategories(offset: Int, before: String, after: String, first: Int, last: Int, name: String, products: [ID]): CategoryNodeConnection
+  ingredient(id: ID!): ProductNode
+  allIngredients(offset: Int, before: String, after: String, first: Int, last: Int, name: String, name_Icontains: String, name_Istartswith: String, description: String, description_Icontains: String, category: ID, category_Name: String): ProductNodeConnection
+}
