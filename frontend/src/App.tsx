@@ -28,6 +28,8 @@ import {
 import RelayEnvironment from './relay/RelayEnviroment';
 import AllCategoriesQuery from './queries/AllCategoriesQuery'
 
+import { Card } from './components';
+
 const { Suspense } = React;
 
 // Define a query
@@ -54,11 +56,13 @@ function App(props: any) {
   console.info({ data })
   return (
     <div className="App">
-      {data?.allCategories.edges.map((category: any) => (
-        <p>{category.node.name}</p>
-      ))
-
-      }
+      <div className="d-flex flex-row">
+        {data?.allCategories.edges.map((category: any) => (
+          <div className="m-1">
+            <Card title={category.node.name} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
