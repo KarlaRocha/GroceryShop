@@ -1,5 +1,6 @@
 # Enviroments
 .env
+.venv
 
 # other
 get-pip.py
